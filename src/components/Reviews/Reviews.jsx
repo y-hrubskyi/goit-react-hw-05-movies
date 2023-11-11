@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import useDataApi from 'hooks/useDataApi';
-import { Loader } from './Loader';
+import { Loader } from '../Loader';
 
 export default function Reviews() {
   const { movieId } = useParams();

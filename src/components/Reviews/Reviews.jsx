@@ -1,8 +1,9 @@
 import { useParams } from 'react-router-dom';
-import useDataApi from 'hooks/useDataApi';
-import { Loader } from '../Loader';
 
-export default function Reviews() {
+import { useDataApi } from 'hooks/useDataApi';
+import { Loader } from 'components/Loader/Loader';
+
+const Reviews = () => {
   const { movieId } = useParams();
   const [{ data, isLoading, isError }] = useDataApi(
     `/movie/${movieId}/reviews`,
@@ -28,4 +29,6 @@ export default function Reviews() {
       )}
     </div>
   );
-}
+};
+
+export default Reviews;

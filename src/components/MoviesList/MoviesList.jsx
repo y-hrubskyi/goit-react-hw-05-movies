@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Loader } from 'components/Loader';
+import { Loader } from 'components/Loader/Loader';
 
-export default function MoviesList({ data, isLoading, isError }) {
+export const MoviesList = ({ data, isLoading, isError }) => {
   const location = useLocation();
 
   return (
@@ -23,4 +23,4 @@ export default function MoviesList({ data, isLoading, isError }) {
       )}
     </>
   );
-}
+};

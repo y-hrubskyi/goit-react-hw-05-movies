@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom';
-import useDataApi from 'hooks/useDataApi';
-import { Loader } from '../Loader';
+import { useDataApi } from 'hooks/useDataApi';
+import { Loader } from 'components/Loader/Loader';
 
-export default function Cast() {
+const Cast = () => {
   const { movieId } = useParams();
   const [{ data, isLoading, isError }] = useDataApi(
     `/movie/${movieId}/credits`,
@@ -32,4 +32,6 @@ export default function Cast() {
       )}
     </div>
   );
-}
+};
+
+export default Cast;

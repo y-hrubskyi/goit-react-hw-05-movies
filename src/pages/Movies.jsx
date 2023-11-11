@@ -1,8 +1,9 @@
 import { useSearchParams } from 'react-router-dom';
-import useDataApi from 'hooks/useDataApi';
-import MoviesList from 'components/MoviesList/MoviesList';
 
-export default function Movies() {
+import { useDataApi } from 'hooks/useDataApi';
+import { MoviesList } from 'components/MoviesList/MoviesList';
+
+const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') ?? '';
 
@@ -37,4 +38,6 @@ export default function Movies() {
       <MoviesList data={data} isLoading={isLoading} isError={isError} />
     </div>
   );
-}
+};
+
+export default Movies;

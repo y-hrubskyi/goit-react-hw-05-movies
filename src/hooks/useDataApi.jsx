@@ -24,7 +24,7 @@ const dataFetchReducer = (state, action) => {
   }
 };
 
-export default function useDataApi(initialUrl, initialData) {
+export const useDataApi = (initialUrl, initialData) => {
   const [url, setUrl] = useState(initialUrl);
   const [state, dispatch] = useReducer(dataFetchReducer, {
     isLoading: false,
@@ -50,4 +50,4 @@ export default function useDataApi(initialUrl, initialData) {
   }, [url]);
 
   return [state, setUrl];
-}
+};

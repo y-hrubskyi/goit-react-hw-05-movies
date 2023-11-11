@@ -1,25 +1,11 @@
 import { Suspense, useRef } from 'react';
-import {
-  Link,
-  NavLink,
-  Outlet,
-  useLocation,
-  useParams,
-} from 'react-router-dom';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 
-import useDataApi from 'hooks/useDataApi';
-import { Loader, PageLoader } from 'components/Loader';
-import styled from 'styled-components';
+import { useDataApi } from 'hooks/useDataApi';
+import { Loader } from 'components/Loader/Loader';
+import { Link, NavItem, NavList } from 'components/Layout/Layout.styled';
 
-const StyledLink = styled(NavLink)`
-  color: black;
-
-  &.active {
-    color: orangered;
-  }
-`;
-
-export default function MovieDetails() {
+const MovieDetails = () => {
   const { movieId } = useParams();
   const [{ data, isLoading, isError }] = useDataApi(`/movie/${movieId}`, {});
   const location = useLocation();
@@ -49,24 +35,24 @@ export default function MovieDetails() {
                 data?.known_for?.map(mov => mov.title).join(' ')}
             </p>
           </li>
-          <hr />
           <div>
-            <p>Additional information</p>
-            <ul>
-              <li>
-                <StyledLink to="cast">Cast</StyledLink>
-              </li>
-              <li>
-                <StyledLink to="reviews">Reviews</StyledLink>
-              </li>
-            </ul>
+            <h3>Additional information</h3>
+            <NavList>
+              <NavItem>
+                <Link to="cast">Cast</Link>
+              </NavItem>
+              <NavItem>
+                <Link to="reviews">Reviews</Link>
+              </NavItem>
+            </NavList>
           </div>
-          <hr />
-          <Suspense fallback={<PageLoader />}>
+          <Suspense fallback={<Loader />}>
             <Outlet />
           </Suspense>
         </>
       )}
     </div>
   );
-}
+};
+
+export default MovieDetails;

@@ -1,7 +1,7 @@
-import useDataApi from 'hooks/useDataApi';
-import MoviesList from 'components/MoviesList/MoviesList';
+import { useDataApi } from 'hooks/useDataApi';
+import { MoviesList } from 'components/MoviesList/MoviesList';
 
-export default function Home() {
+const Home = () => {
   const [{ data, isLoading, isError }] = useDataApi('/trending/all/day', {
     movies: [],
   });
@@ -12,4 +12,6 @@ export default function Home() {
       <MoviesList data={data} isLoading={isLoading} isError={isError} />
     </div>
   );
-}
+};
+
+export default Home;

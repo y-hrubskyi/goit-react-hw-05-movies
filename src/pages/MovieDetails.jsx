@@ -1,9 +1,10 @@
 import { Suspense, useRef } from 'react';
-import { Outlet, useLocation, useParams } from 'react-router-dom';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 
 import { useDataApi } from 'hooks/useDataApi';
 import { Loader } from 'components/Loader/Loader';
-import { Link, NavItem, NavList } from 'components/Layout/Layout.styled';
+import { MovieCard } from 'components/MovieCard/MovieCard';
+import { MovieNav } from 'components/MovieNav/MovieNav';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -19,33 +20,9 @@ const MovieDetails = () => {
       {isLoading && <Loader />}
       {data && (
         <>
-          <li>
-            <img
-              src={`https://image.tmdb.org/t/p/w200${data.poster_path}`}
-              alt=""
-            />
-            <h2>{data.title || data.name}</h2>
-            <p>
-              {data.release_date ||
-                data.first_air_date ||
-                data.known_for_department}
-            </p>
-            <p>
-              {data.overview ||
-                data?.known_for?.map(mov => mov.title).join(' ')}
-            </p>
-          </li>
-          <div>
-            <h3>Additional information</h3>
-            <NavList>
-              <NavItem>
-                <Link to="cast">Cast</Link>
-              </NavItem>
-              <NavItem>
-                <Link to="reviews">Reviews</Link>
-              </NavItem>
-            </NavList>
-          </div>
+          <MovieCard data={data} />
+          <MovieNav />
+
           <Suspense fallback={<Loader />}>
             <Outlet />
           </Suspense>

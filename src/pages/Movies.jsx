@@ -8,8 +8,7 @@ const Movies = () => {
   const query = searchParams.get('query') ?? '';
 
   const [{ data, isLoading, isError }, doFetch] = useDataApi(
-    query ? `/search/movie?query=${query}` : '',
-    { movies: [] }
+    query ? `/search/movie?query=${query}` : ''
   );
 
   const handleChange = e => {
@@ -20,8 +19,9 @@ const Movies = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+
     if (!query) {
-      alert("Enter movie's name!");
+      alert("Please, enter movie's name!");
       return;
     }
 

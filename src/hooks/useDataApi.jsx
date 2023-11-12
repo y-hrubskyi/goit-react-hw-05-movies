@@ -24,12 +24,12 @@ const dataFetchReducer = (state, action) => {
   }
 };
 
-export const useDataApi = (initialUrl, initialData) => {
+export const useDataApi = initialUrl => {
   const [url, setUrl] = useState(initialUrl);
   const [state, dispatch] = useReducer(dataFetchReducer, {
     isLoading: false,
     isError: false,
-    data: initialData,
+    data: null,
   });
 
   useEffect(() => {

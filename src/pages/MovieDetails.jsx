@@ -8,13 +8,13 @@ import { MovieNav } from 'components/MovieNav/MovieNav';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
-  const [{ data, isLoading, isError }] = useDataApi(`/movie/${movieId}`, {});
+  const [{ data, isLoading, isError }] = useDataApi(`/movie/${movieId}`);
   const location = useLocation();
-  const backLinkRef = useRef(location.state?.from ?? '/');
+  const backLinkLocationRef = useRef(location.state?.from ?? '/');
 
   return (
     <div>
-      <Link to={backLinkRef.current}>⬅️ Go Back</Link>
+      <Link to={backLinkLocationRef.current}>⬅️ Go Back</Link>
       <h1>MovieDetails</h1>
       {isError && <div>Something went wrong...</div>}
       {isLoading && <Loader />}

@@ -2,9 +2,7 @@ import { useDataApi } from 'hooks/useDataApi';
 import { MoviesList } from 'components/MoviesList/MoviesList';
 
 const Home = () => {
-  const [{ data, isLoading, isError }] = useDataApi('/trending/all/day', {
-    movies: [],
-  });
+  const [{ data, isLoading, isError }] = useDataApi('/trending/all/day');
 
   return (
     <div>

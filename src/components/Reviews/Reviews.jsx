@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 
 import { useDataApi } from 'hooks/useDataApi';
 import { Loader } from 'components/Loader/Loader';
+import { ReviewsList } from './Reviews.styled';
 
 const Reviews = () => {
   const { movieId } = useParams();
@@ -12,18 +13,17 @@ const Reviews = () => {
 
   return (
     <div>
-      <h3>Reviews</h3>
       {isError && <div>Something went wrong...</div>}
       {isLoading && <Loader />}
       {!isEmpty ? (
-        <ul>
+        <ReviewsList>
           {data?.results.map(item => (
             <li key={item.id}>
-              <p>{item.author}</p>
+              <h4>{item.author}</h4>
               <p>{item.content}</p>
             </li>
           ))}
-        </ul>
+        </ReviewsList>
       ) : (
         'No any reviews'
       )}

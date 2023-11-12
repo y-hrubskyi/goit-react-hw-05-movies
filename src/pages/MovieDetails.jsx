@@ -5,6 +5,7 @@ import { useDataApi } from 'hooks/useDataApi';
 import { Loader } from 'components/Loader/Loader';
 import { MovieCard } from 'components/MovieCard/MovieCard';
 import { MovieNav } from 'components/MovieNav/MovieNav';
+import { PageTitle } from 'components/Layout/Layout.styled';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -15,7 +16,7 @@ const MovieDetails = () => {
   return (
     <div>
       <Link to={backLinkLocationRef.current}>⬅️ Go Back</Link>
-      <h1>MovieDetails</h1>
+      <PageTitle>MovieDetails</PageTitle>
       {isError && <div>Something went wrong...</div>}
       {isLoading && <Loader />}
       {data && (

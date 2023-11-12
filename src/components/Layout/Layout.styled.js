@@ -21,14 +21,11 @@ export const NavList = styled.ul`
   padding: 12px 0;
 `;
 
-export const NavItem = styled.ul`
-  list-style: none;
-`;
+export const NavItem = styled.ul``;
 
 export const Link = styled(NavLink)`
   padding: 8px 16px;
   border-radius: 4px;
-  text-decoration: none;
   color: black;
   font-weight: 500;
 
@@ -36,4 +33,8 @@ export const Link = styled(NavLink)`
     color: white;
     background-color: orangered;
   }
+`;
+
+export const PageTitle = styled.h1`
+  text-align: center;
 `;

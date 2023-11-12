@@ -2,6 +2,8 @@ import { useSearchParams } from 'react-router-dom';
 
 import { useDataApi } from 'hooks/useDataApi';
 import { MoviesList } from 'components/MoviesList/MoviesList';
+import { PageTitle } from 'components/Layout/Layout.styled';
+import { SearchBar } from 'components/SearchBar/SearchBar';
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -30,11 +32,12 @@ const Movies = () => {
 
   return (
     <div>
-      <h1>Search</h1>
-      <form onSubmit={handleSubmit}>
-        <input type="text" value={query} onChange={handleChange} />
-        <button type="submit">Search</button>
-      </form>
+      <PageTitle>Search</PageTitle>
+      <SearchBar
+        query={query}
+        onChange={handleChange}
+        onSubmit={handleSubmit}
+      />
       <MoviesList data={data} isLoading={isLoading} isError={isError} />
     </div>
   );

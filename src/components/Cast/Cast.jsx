@@ -2,6 +2,13 @@ import { useParams } from 'react-router-dom';
 import { useDataApi } from 'hooks/useDataApi';
 import { Loader } from 'components/Loader/Loader';
 
+import { CastItem, CastList } from './Cast.styled';
+import placeholder from 'img/person-placeholder.jpg';
+
+const setPhoto = link => {
+  return link ? `https://image.tmdb.org/t/p/w200${link}` : placeholder;
+};
+
 const Cast = () => {
   const { movieId } = useParams();
   const [{ data, isLoading, isError }] = useDataApi(
@@ -11,22 +18,22 @@ const Cast = () => {
 
   return (
     <div>
-      <h3>Cast</h3>
       {isError && <div>Something went wrong...</div>}
       {isLoading && <Loader />}
       {!isEmpty ? (
-        <ul>
+        <CastList>
           {data?.cast.map(item => (
-            <li key={item.id}>
+            <CastItem key={item.id}>
               <img
-                src={`https://image.tmdb.org/t/p/w200${item.profile_path}`}
-                alt=""
+                src={setPhoto(item.profile_path)}
+                alt={item.name}
+                width="200"
               />
-              <h2>{item.name}</h2>
+              <h4>{item.name}</h4>
               <p>Character: {item.character}</p>
-            </li>
+            </CastItem>
           ))}
-        </ul>
+        </CastList>
       ) : (
         'No any casts'
       )}

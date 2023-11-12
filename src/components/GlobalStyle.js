@@ -34,8 +34,8 @@ export const GlobalStyle = createGlobalStyle`
   ul,
   ol {
     margin: 0;
-    /* padding: 0; */
-    /* list-style: none; */
+    padding: 0;
+    list-style: none;
   }
 
   button {

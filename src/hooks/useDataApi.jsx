@@ -1,10 +1,9 @@
 import { useEffect, useReducer, useState } from 'react';
 import axios from 'axios';
 
-const API_KEY = '345007f9ab440e5b86cef51be6397df1';
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 axios.defaults.params = {
-  api_key: API_KEY,
+  api_key: '345007f9ab440e5b86cef51be6397df1',
 };
 
 const dataFetchReducer = (state, action) => {
